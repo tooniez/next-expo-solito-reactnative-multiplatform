@@ -13,13 +13,14 @@
     "web:extract": "DISABLE_EXTRACTION=false yarn workspace next-app dev",
     "web:prod": "yarn workspace next-app build",
     "web:prod:serve": "yarn workspace next-app serve",
-    "fix": "manypkg fix",
-    "postinstall": "yarn check-deps && yarn build",
+    "postinstall": "yarn check-tamagui && yarn build",
     "build": "yarn workspaces foreach --all --exclude next-app run build",
     "upgrade:tamagui": "yarn up '*tamagui*'@latest '@tamagui/*'@latest react-native-web-lite@latest",
     "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary react-native-web-lite@canary",
-    "check-deps": "check-dependency-version-consistency .",
-    "test": "vitest"
+    "check-tamagui": "tamagui check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepare": "husky"
   },
   "resolutions": {
     "react": "^18.3.1",
@@ -30,13 +31,15 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.24.6",
-    "@manypkg/cli": "^0.21.4",
+    "@tamagui/cli": "^1.114.2",
     "check-dependency-version-consistency": "^4.1.0",
     "eslint": "^9.3.0",
+    "husky": "^9.1.6",
     "node-gyp": "^10.1.0",
     "prettier": "^3.3.3",
     "turbo": "^1.13.4",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
   },
   "packageManager": "yarn@4.5.0",
   "engines": {
@@ -44,6 +47,6 @@
     "npm": "10.8"
   },
   "devDependencies": {
-    "vitest": "^2.1.1"
+    "@biomejs/biome": "^1.9.3"
   }
 }
